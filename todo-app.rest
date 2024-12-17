@@ -22,3 +22,34 @@ Content-Type: application/json
     "username": "AnshGrover@gmail.com",
     "password": "123456"
 }
+
+### Fetch all todos Get /todos (protected)
+
+GET http://localhost:8383/todos/
+Authorization: your_jwt_secret_key
+
+### create a new Todo POST /todos (protected)
+
+POST http://localhost:8383/todos/
+Authorization: your_jwt_secret_key
+Content-Type: application/json
+
+{
+    "task": "bro do the gym"
+}
+
+### update a Todo PUT /todos/:ID (protected)
+
+PUT  http://localhost:8383/todos/2
+Authorization: your_jwt_secret_key
+Content-Type: application/json
+
+{
+    "task": "bro THIS IS CHANGED TODO",
+    "completed": 1
+}
+
+### delte a Todo delete /todos/:ID (protected)
+
+DELETE   http://localhost:8383/todos/2
+Authorization: your_jwt_secret_key
