@@ -25,19 +25,43 @@ router.post('/register', (req, res) => {
         insertTodo.run(result.lastInsertRowid, defaultTodo)
 
         // create a token to authenticate existed user
-        const token =  jwt.sign({id: result.lastInsertRowid}, process.env.JWT_SECRET, {expiresIn: '24h'})
+        const token = jwt.sign({ id: result.lastInsertRowid }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token })
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503);
 
 
     }
-    res.sendStatus(201)
 
 })
 
-router.post('login', (req, res) => {
+router.post('/login', (req, res) => {
+    const { username, password } = req.body;
 
+    try {
+        const getUser = db.prepare(`SELECT * from users WHERE username = ?`)
+        const user = getUser.get(username)
+        // check if user exist 
+        if (!user) {
+            return res.status(404).send({ message: "user not found" })
+        }
+        // matches the password
+        const isPasswordValid = bcrypt.compareSync(password, user.password)
+        // check if password is valid or not
+        if (!isPasswordValid) {
+            return res.status(401).send({ message: "INVALID Password" })
+        }
+
+        console.log(user);
+        // create a token to authenticate existed user
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token })
+    } catch (err) {
+        console.log(err.message);
+        res.sendStatus(503);
+
+    }
 })
 
 
