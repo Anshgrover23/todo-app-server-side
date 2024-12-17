@@ -1,0 +1,13 @@
+### Get '/' website
+
+GET http://localhost:8383
+
+### 
+
+POST http://localhost:8383/auth/register
+Content-Type: application/json
+
+{
+    "username": "",
+    "password": ""
+}
