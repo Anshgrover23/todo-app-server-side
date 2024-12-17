@@ -2,12 +2,23 @@
 
 GET http://localhost:8383
 
-### 
+### Register a user POST auth/register
 
 POST http://localhost:8383/auth/register
 Content-Type: application/json
 
 {
-    "username": "",
-    "password": ""
+    "username": "AnshGrover@gmail.com",
+    "password": "123456"
+}
+
+
+### Login a user POST auth/login
+
+POST http://localhost:8383/auth/login
+Content-Type: application/json
+
+{
+    "username": "AnshGrover@gmail.com",
+    "password": "123456"
 }
