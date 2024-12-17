@@ -10,10 +10,13 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "description": "A todo-application that uses Node.js as a backend, SQLite as a database, and JWT Authentication.",
+  "description": "A dockerized full-stack todo-application that uses Node.js as a backend, PostgreSQL as a database,a Prisma ORM, and JWT Authentication.",
   "dependencies": {
+    "@prisma/client": "^6.0.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "prisma": "^6.0.1"
   }
 }
