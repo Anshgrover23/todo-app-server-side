@@ -1,14 +1,15 @@
 # Todo App Server-Side
 
-A simple **server-side Todo application** built with **Node.js**, **Express.js**, and **SQLite**, featuring secure **JWT-based authentication** and CRUD functionality.
+A Dockerized **full-stack Todo application** featuring a **Node.js** backend, **PostgreSQL** database with **Prisma ORM**, and **JWT-based authentication** for secure user sessions.
 
 ---
 
 ## Features
 
-- **JWT Authentication** for user security
-- **CRUD Operations**: Add, retrieve, update, and delete todos
-- **SQLite** for lightweight database storage
+- **JWT Authentication** for user security.
+- **CRUD Operations**: Add, retrieve, update, and delete todos.
+- **PostgreSQL** with Prisma ORM for robust database management.
+- **Dockerized setup** for streamlined deployment.
 
 ---
 
@@ -16,8 +17,9 @@ A simple **server-side Todo application** built with **Node.js**, **Express.js**
 
 Ensure you have the following installed:
 
+- **Docker Desktop**
 - **Node.js** (v20+)
-- **SQLite**
+- **npm**
 
 ---
 
@@ -28,19 +30,39 @@ Ensure you have the following installed:
    git clone https://github.com/Anshgrover23/todo-app-server-side.git
    cd todo-app-server-side
    ```
-2. **Install dependencies**:
+
+2. **Generate Prisma Client**:
    ```bash
-   npm install
+   npx prisma generate
    ```
-3. **Set up environment variables**:
-- Create a `.env` file in the project root.
-- Add your `JWT_SECRET`:
-  ```bash
-  JWT_SECRET=your_secret_key
-  ```
-4. **Start the server**:
+
+2. **Build Docker Images**:
    ```bash
-   npm run dev
+   docker compose build
    ```
-## License
+
+4. **Set Up PostgreSQL Migrations**:
+- To create and apply initial migrations:
+
+   ```bash
+   docker compose run app npx prisma migratedev--name init
+   ```
+- To apply existing migrations:
+
+   ```bash
+   docker compose run app npx prisma migrate deploy
+   ```
+
+5. **Start Docker Containers**:
+   ```bash
+   docker compose up
+   ```
+
+6. **Access the App**
+
+- Open http://localhost:8383 in your browser (or http://localhost:8383 if configured differently) to access the frontend. Register, log in, and manage your todo list!
+
+
+
+
 This project is licensed under the [MIT License](license.md).
