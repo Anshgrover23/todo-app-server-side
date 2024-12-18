@@ -14,12 +14,15 @@ RUN npm install
 COPY . .
 
 #Expose the port that the app runs on
-EXPOSE 8383
-
-#Define the command to run up application
-CMD [ "node", "./src/server.js" ]
+EXPOSE 8080
 
 # Install OpenSSL for Prisma
 RUN apk add --no-cache openssl
+
+# run prisma generate
+RUN npx prisma generate
+
+#Define the command to run up application
+ENTRYPOINT [ "node", "./src/server.js" ]
 
 
