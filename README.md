@@ -4,6 +4,9 @@ A Dockerized **full-stack Todo application** featuring a **Node.js** backend, **
 
 ---
 
+![image](https://github.com/user-attachments/assets/6a7af756-2747-482f-a4a1-691cd7b6b677)
+
+
 ## Features
 
 - **JWT Authentication** for user security.
