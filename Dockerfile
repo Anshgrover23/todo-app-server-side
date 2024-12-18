@@ -22,6 +22,8 @@ RUN apk add --no-cache openssl
 # run prisma generate
 RUN npx prisma generate
 
+RUN npx prisma migrate deploy
+
 #Define the command to run up application
 ENTRYPOINT [ "node", "./src/server.js" ]
 
