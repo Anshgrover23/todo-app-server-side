@@ -1,6 +1,6 @@
 # Todo App Server-Side
 
-A Dockerized **full-stack Todo application** featuring a **Node.js** backend, **PostgreSQL** database with **Prisma ORM**, and **JWT-based authentication** for secure user sessions.
+A dockerized **full-stack Todo application** featuring a **Node.js** backend, **PostgreSQL** database with **Prisma ORM**, and **JWT-based authentication** for secure user sessions.
 
 ---
 
