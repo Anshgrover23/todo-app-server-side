@@ -1,0 +1,16 @@
+name: Notify on Star
+
+on:
+  watch:
+    types: [started]
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send to Discord
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "${{ github.actor }} just starred ⭐ the repository!"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
